@@ -5,6 +5,6 @@ Used Tools:
  SASS
  Typescript
 
-![image](https://user-images.githubusercontent.com/100687592/215881232-6067760f-4617-4b28-8c44-4dc115ad54d3.png)
+![image](https://user-images.githubusercontent.com/100687592/215881445-5c90d141-c6c0-4b1e-956d-77a729f3d7b1.png)
 
 Link : https://lack21.github.io/WatchLux-Website-/
