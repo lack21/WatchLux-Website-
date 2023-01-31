@@ -1,0 +1,659 @@
+/* lear */
+/* Watchlux */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Colors */
+$lightColor: #f8f9fa;
+$darkColor: #16161a;
+$shadowColor: #9a9a9a;
+$lightPurple: #8646f6;
+$lightBlue: #4686f6;
+$darkBlue: #3666c6;
+
+@mixin specialBtn() {
+  font-size: 1rem;
+  padding: 0.8rem 1.6rem;
+  margin: 2rem 0;
+  cursor: pointer;
+  color: $lightPurple;
+  background-color: transparent;
+  border: 1px solid $lightPurple;
+
+  &:hover {
+    background-color: $lightPurple;
+    color: $lightColor;
+  }
+}
+
+body {
+  background-color: $lightColor;
+  color: $darkColor;
+  transition: 0.6s;
+  -webkit-transition: 0.6s;
+  -moz-transition: 0.6s;
+  -ms-transition: 0.6s;
+  -o-transition: 0.6s;
+}
+
+.dark-body {
+  background-color: $darkColor;
+  color: $lightColor;
+}
+
+.blur {
+  filter: blur(3px);
+  -webkit-filter: blur(3px);
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 2rem;
+}
+
+/* Global Styles */
+.btn {
+  text-decoration: none;
+  padding: 0.9rem 1.8rem;
+  background-color: $lightBlue;
+  color: $lightColor;
+
+  &:hover {
+    background-color: $darkBlue;
+  }
+}
+
+.sub-header {
+  padding: 4rem 0;
+  text-align: center;
+  font-size: 2rem;
+  font-weight: normal;
+
+  .fa {
+    font-size: 2.5rem;
+    color: $lightPurple;
+    text-shadow: 0 0 1rem $lightPurple;
+  }
+}
+
+p {
+  line-height: 1.4rem;
+}
+
+.social-icons {
+  display: flex;
+  justify-content: center;
+  gap: 2.5rem;
+  margin: 3rem 0;
+
+  a {
+    font-size: 1.4rem;
+    color: $lightBlue;
+    text-shadow: 0 0 1rem $lightBlue;
+    transition: 0.6s;
+    -webkit-transition: 0.6s;
+    -moz-transition: 0.6s;
+    -ms-transition: 0.6s;
+    -o-transition: 0.6s;
+
+    &:hover {
+      transform: translateY(-50%) scale(1.2);
+      -webkit-transform: translateY(-50%) scale(1.2);
+      -moz-transform: translateY(-50%) scale(1.2);
+      -ms-transform: translateY(-50%) scale(1.2);
+      -o-transform: translateY(-50%) scale(1.2);
+    }
+  }
+}
+
+/* Back To Top Button */
+.top-btn {
+  display: none;
+  position: fixed;
+  bottom: 1rem;
+  right: 1rem;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  -webkit-border-radius: 0.5rem;
+  -moz-border-radius: 0.5rem;
+  -ms-border-radius: 0.5rem;
+  -o-border-radius: 0.5rem;
+  background-color: $lightBlue;
+  color: $lightColor;
+
+  &:hover {
+    background-color: $darkBlue;
+  }
+}
+
+/* Header */
+#header {
+  width: 100%;
+  height: 100vh;
+  background-image: linear-gradient(#0004, #0004), url(images/watchlux_back.jpg);
+  background-size: cover;
+  background-position: center;
+
+  /* Navigation */
+  .navigation {
+    position: fixed;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 2rem 5%;
+    z-index: 999;
+    transition: 0.6s;
+    -webkit-transition: 0.6s;
+    -moz-transition: 0.6s;
+    -ms-transition: 0.6s;
+    -o-transition: 0.6s;
+
+    .logo {
+      width: 160px;
+      display: block;
+    }
+
+    .links {
+      list-style: none;
+      display: flex;
+      align-items: center;
+      gap: 3rem;
+
+      li {
+        display: inline-block;
+
+        &::after {
+          content: "";
+          display: block;
+          margin: auto;
+          width: 0;
+          height: 0.1rem;
+          background-color: $lightColor;
+          transition: 0.6s;
+          -webkit-transition: 0.6s;
+          -moz-transition: 0.6s;
+          -ms-transition: 0.6s;
+          -o-transition: 0.6s;
+        }
+
+        &:hover::after {
+          width: 100%;
+        }
+
+        a {
+          text-decoration: none;
+          color: $lightColor;
+        }
+      }
+
+      .switch-btn {
+        width: 60px;
+        height: 30px;
+        border: none;
+        cursor: pointer;
+        border-radius: 30px;
+        -webkit-border-radius: 30px;
+        -moz-border-radius: 30px;
+        -ms-border-radius: 30px;
+        -o-border-radius: 30px;
+        padding: 0 0.5rem;
+
+        .switch-icon {
+          width: 20px;
+          height: 20px;
+          background-color: $shadowColor;
+          border-radius: 50%;
+          -webkit-border-radius: 50%;
+          -moz-border-radius: 50%;
+          -ms-border-radius: 50%;
+          -o-border-radius: 50%;
+          transition: 0.6s;
+          -webkit-transition: 0.6s;
+          -moz-transition: 0.6s;
+          -ms-transition: 0.6s;
+          -o-transition: 0.6s;
+        }
+
+        .icon-on {
+          transform: translateX(25px);
+          -webkit-transform: translateX(25px);
+          -moz-transform: translateX(25px);
+          -ms-transform: translateX(25px);
+          -o-transform: translateX(25px);
+          background-color: $lightBlue;
+        }
+      }
+    }
+
+    .close-links-btn,
+    .open-links-btn {
+      display: none;
+    }
+  }
+
+  /* Content */
+  .content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    max-width: 90%;
+    margin: auto;
+    color: $lightColor;
+    text-align: center;
+    gap: 2rem;
+
+    .title {
+      font-size: 3rem;
+
+      span {
+        color: $lightBlue;
+      }
+    }
+  }
+}
+
+/* About Us Section */
+#about {
+  max-width: 90%;
+  margin: 2rem auto;
+
+  .about-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 1.4rem;
+
+    .about-item {
+      width: 100%;
+
+      h3 {
+        font-size: 1.6rem;
+        font-weight: normal;
+        margin-bottom: 1rem;
+      }
+
+      img {
+        width: 100%;
+        border-radius: 3px;
+        -webkit-border-radius: 3px;
+        -moz-border-radius: 3px;
+        -ms-border-radius: 3px;
+        -o-border-radius: 3px;
+        box-shadow: 0 0 1rem $shadowColor;
+      }
+    }
+  }
+}
+
+/* Our Offers Section */
+#offers {
+  max-width: 90%;
+  margin: 2rem auto;
+  text-align: center;
+
+  .offers-btn {
+    @include specialBtn();
+  }
+
+  .offers-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 2rem;
+    color: $darkColor;
+
+    .hidden-offer {
+      display: none;
+    }
+
+    .offers-item {
+      position: relative;
+      padding: 2rem;
+      background-color: #fff;
+      box-shadow: 0 0 1rem $shadowColor;
+      border-radius: 3px;
+      -webkit-border-radius: 3px;
+      -moz-border-radius: 3px;
+      -ms-border-radius: 3px;
+      -o-border-radius: 3px;
+
+      &::after {
+        content: '"';
+        font-size: 3rem;
+        color: $lightBlue;
+        position: absolute;
+        top: -6%;
+        left: 12%;
+      }
+
+      h3 {
+        font-size: 1.4rem;
+        font-weight: normal;
+        margin-bottom: 1rem;
+      }
+    }
+  }
+}
+
+/* Banner Section */
+.banner {
+  width: 100%;
+  height: 60vh;
+  box-shadow: 0 0 1rem $shadowColor;
+  background-image: linear-gradient(#0004, #0004), url(images/banner.jpg);
+  background-size: cover;
+  background-position: center;
+  margin: 2rem 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 1rem;
+  padding-left: 5%;
+
+  h3 {
+    font-size: 1.8rem;
+    font-weight: normal;
+    color: $lightColor;
+  }
+}
+
+/* Items Section */
+#items {
+  max-width: 90%;
+  margin: 2rem auto;
+  text-align: center;
+
+  .items-btn {
+    @include specialBtn();
+  }
+
+  .items-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 3rem;
+    color: $darkColor;
+
+    .hidden-item {
+      display: none;
+    }
+
+    .items-item {
+      box-shadow: 0 0 1rem $shadowColor;
+
+      img {
+        width: 100%;
+        display: block;
+      }
+
+      .bottom-side {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0.5rem;
+        background-color: #fff;
+
+        h3 {
+          font-size: 1.2rem;
+          font-weight: normal;
+        }
+
+        .btn {
+          padding: 0.7rem 1.4rem;
+        }
+      }
+    }
+  }
+}
+
+/* Our Shops Section */
+.shop {
+  max-width: 90%;
+  margin: 2rem auto;
+
+  .shop-row {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+
+    .shop-item {
+      position: relative;
+      overflow: hidden;
+      border-radius: 3px;
+      -webkit-border-radius: 3px;
+      -moz-border-radius: 3px;
+      -ms-border-radius: 3px;
+      -o-border-radius: 3px;
+
+      img {
+        width: 100%;
+        display: block;
+      }
+
+      .layer {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        transition: 0.6s;
+        -webkit-transition: 0.6s;
+        -moz-transition: 0.6s;
+        -ms-transition: 0.6s;
+        -o-transition: 0.6s;
+
+        &:hover {
+          background-color: #3666c666;
+
+          h3 {
+            opacity: 1;
+            bottom: 48%;
+          }
+        }
+
+        h3 {
+          position: absolute;
+          bottom: 0;
+          left: 50%;
+          opacity: 0;
+          font-size: 1.4rem;
+          font-weight: normal;
+          color: $lightColor;
+          transform: translateX(-50%);
+          -webkit-transform: translateX(-50%);
+          -moz-transform: translateX(-50%);
+          -ms-transform: translateX(-50%);
+          -o-transform: translateX(-50%);
+          transition: 0.6s;
+          -webkit-transition: 0.6s;
+          -moz-transition: 0.6s;
+          -ms-transition: 0.6s;
+          -o-transition: 0.6s;
+        }
+      }
+    }
+  }
+}
+
+/* Testimonials Section */
+#testimonials {
+  max-width: 90%;
+  margin: 2rem auto;
+  text-align: center;
+
+  .testimonials-row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 3.5rem;
+    color: $darkColor;
+
+    .testimonials-item {
+      position: relative;
+      background-color: #fff;
+      box-shadow: 0 0 1rem $shadowColor;
+      padding: 1.5rem;
+      width: min(600px, 100%);
+
+      &::after {
+        position: absolute;
+        top: 0;
+        right: 5%;
+        content: ",,";
+        font-size: 3rem;
+        color: $lightBlue;
+      }
+
+      img {
+        width: 100px;
+        border-radius: 50%;
+        -webkit-border-radius: 50%;
+        -moz-border-radius: 50%;
+        -ms-border-radius: 50%;
+        -o-border-radius: 50%;
+        box-shadow: 0 0 1rem $shadowColor;
+      }
+
+      h3 {
+        margin: 0.5rem 0;
+        font-size: 1.4rem;
+        font-weight: normal;
+      }
+    }
+  }
+}
+
+/* Contact Us Section */
+#contact {
+  max-width: 90%;
+  margin: 2rem auto;
+
+  .contact-row {
+    display: flex;
+    justify-content: space-between;
+
+    .contact-text {
+      display: flex;
+      flex-direction: column;
+      gap: 3rem;
+      width: 100%;
+
+      h3 {
+        font-size: 1.5rem;
+        font-weight: normal;
+        margin-bottom: 0.5rem;
+
+        .fa {
+          color: $lightBlue;
+          font-size: 1.6rem;
+        }
+      }
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      width: 100%;
+
+      input,
+      textarea {
+        padding: 0.8rem;
+      }
+
+      .contact-btn {
+        @include specialBtn();
+        width: 160px;
+        margin: auto;
+      }
+    }
+  }
+
+  .frame-img {
+    width: 100%;
+    height: 60vh;
+    border: none;
+    box-shadow: 0 0 1rem $shadowColor;
+    margin: 3rem 0;
+  }
+}
+
+/* Footer Section */
+.footer {
+  max-width: 90%;
+  margin: auto;
+  text-align: center;
+
+  h4 {
+    margin: 1rem 0 0.3rem;
+    font-size: 1.2rem;
+    font-weight: normal;
+  }
+}
+
+/* For Smaller Device */
+@media screen and (max-width: 768px) {
+  /* Navigation Links */
+  .links {
+    position: fixed;
+    flex-direction: column;
+    align-items: flex-start !important;
+    background-color: $lightBlue;
+    height: 100vh;
+    width: 150px;
+    top: 0;
+    right: -150px;
+    gap: 1.5rem !important;
+    padding: 1rem;
+    transition: 0.6s;
+    -webkit-transition: 0.6s;
+    -moz-transition: 0.6s;
+    -ms-transition: 0.6s;
+    -o-transition: 0.6s;
+  }
+
+  .close-links-btn,
+  .open-links-btn {
+    display: block !important;
+    color: $lightColor;
+    font-size: 1.4rem;
+  }
+
+  /* Logo */
+  .logo {
+    width: 120px !important;
+  }
+
+  /* Flexbox and Grid */
+  .about-row,
+  .shop-row,
+  .testimonials-row,
+  .contact-row,
+  .offers-row,
+  .items-row {
+    flex-direction: column;
+    grid-template-columns: 1fr !important;
+    max-width: 500px;
+    margin: auto;
+    gap: 2rem !important;
+  }
+
+  /* Sub Header */
+  .sub-header {
+    font-size: 1.6rem;
+
+    .fa {
+      font-size: 2rem;
+    }
+  }
+
+  .banner h3 {
+    font-size: 1.6rem;
+  }
+}
